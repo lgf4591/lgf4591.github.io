@@ -1,0 +1,939 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="千泷">
+  <meta name="keywords" content="hexo,theme,fluid,material,material-design,blog">
+  
+    <meta name="description" content="通过 Netlify CMS 实现在线编辑文章和修改主题配置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo Netlify CMS 在线编辑博客">
+<meta property="og:url" content="https://fluid-dev.cn/posts/hexo-netlify/index.html">
+<meta property="og:site_name" content="Hexo Theme Fluid">
+<meta property="og:description" content="通过 Netlify CMS 实现在线编辑文章和修改主题配置">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://fluid.s3.bitiful.net/hexo-netlify/cover.png?w=480&fmt=webp">
+<meta property="article:published_time" content="2021-04-20T14:41:54.000Z">
+<meta property="article:modified_time" content="2023-12-06T13:44:36.063Z">
+<meta property="article:author" content="Fluid">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="用户经验">
+<meta property="article:tag" content="花里胡哨">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://fluid.s3.bitiful.net/hexo-netlify/cover.png?w=480&fmt=webp">
+  
+  
+  
+  <title>Hexo Netlify CMS 在线编辑博客 - Hexo Theme Fluid</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"fluid-dev.cn","root":"/","version":"1.9.6","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"LyT8mpSI2Jq9CRhOtNOgBXkE-9Nh9j0Va","app_key":"fUOlkXhD9wcmxOTed9NdlqPH","server_url":"https://lyt8mpsi.lc-cn-e1-shared.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  <style>ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }</style>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Hexo Theme Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/community/" target="_self">
+                <i class="iconfont icon-wechat2-fill"></i>
+                <span>社群</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-books"></i>
+                <span>文档</span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="https://hexo.fluid-dev.com/docs/start/" rel="external nofollow noreferrer" target="_self">
+                    
+                    <span>安装主题</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="https://hexo.fluid-dev.com/docs/guide/" rel="external nofollow noreferrer" target="_self">
+                    
+                    <span>配置指南</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="https://hexo.fluid-dev.com/docs/icon/" rel="external nofollow noreferrer" target="_self">
+                    
+                    <span>图标用法</span>
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" rel="external nofollow noreferrer" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" rel="external nofollow noreferrer" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://fluid.s3.bitiful.net/bg/dojm2h.png?w=1920&q=100&fmt=webp') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Hexo Netlify CMS 在线编辑博客"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-04-20 22:41" pubdate>
+          2021年4月20日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          15 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+<aside class="sidebar d-none d-xl-block" style="margin-right:-1rem;z-index:-1"><ins class="adsbygoogle" style="display:flex;justify-content:center;min-width:160px;max-width:300px;width:100%;height:600px;position:sticky;top:2rem" data-ad-client="ca-pub-2938778520580915" data-ad-slot="5354067759"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({}); </script></aside>
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Hexo Netlify CMS 在线编辑博客</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <div class="note note-success">
+            <p>本文由 Fluid 用户授权转载，版权归原作者所有。</p><p>本文作者：千泷<br />原文地址：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.myql.xyz/post/e00ab0f6/" class="uri">https://www.myql.xyz/post/e00ab0f6/</a></p>
+          </div>
+<h2 id="前言">✨前言</h2>
+<p>我们都知道，<a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io/zh-cn/">Hexo</a> 是一个静态部署博客的框架，优点在于速度快，成本低（无需服务器），缺点在于繁琐，你每次更新文章都需要去改代码，再部署推送，修改配置也是如此，你不能像 <code>WordPress</code> 一样直接在后台修改配置并使它生效。</p>
+<p>不过有很多教程可以让你无需繁琐的部署，只管推送代码，通过 <code>GitHub Actions</code>，<code>travis-ci</code>，<a target="_blank" rel="noopener external nofollow noreferrer" href="https://vercel.com/">vercel</a>，<a href="Netlifyhttps://www.netlify.com/" rel="external nofollow noreferrer">Netlify</a> 等都可以便捷的进行博客的部署，只管写代码然后推送就好，类似的教程有非常多，在此就不再重复介绍。那么，我们是否可以在此基础上，更加便捷的进行静态博客的写作和管理？答案是可以的。</p>
+<p>我们可以通过将博客部署到 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.netlify.com/">Netlify</a>，并使用 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.netlifycms.org/">Netlify CMS</a> 来做到这一点。</p>
+<p>首先，我们来了解一下配置完之后可以做到哪些事情？</p>
+<ul>
+<li>在线新建，编辑，预览，删除博客文章</li>
+<li>支持文章草稿，工作流</li>
+<li>支持对博客图片的管理</li>
+<li>支持在线修改博客配置，例如对首页顶部图的修改，友链的修改</li>
+</ul>
+<hr />
+<h3 id="图片预览">🎈图片预览</h3>
+<p>配置完的界面</p>
+<figure>
+<img src="https://myql.coding.net/p/owo/d/img/git/raw/main/posts/image-20210420211303684.png" srcset="/img/loading.gif" lazyload alt="" /><figcaption>image-20210420211303684</figcaption>
+</figure>
+<p>在线对文章进行编辑，修改</p>
+<figure>
+<img src="https://myql.coding.net/p/owo/d/img/git/raw/main/posts/image-20210418222435713.png" srcset="/img/loading.gif" lazyload alt="" /><figcaption>image-20210418222435713</figcaption>
+</figure>
+<figure>
+<img src="https://myql.coding.net/p/owo/d/img/git/raw/main/posts/image-20210418222455291.png" srcset="/img/loading.gif" lazyload alt="" /><figcaption>image-20210418222455291</figcaption>
+</figure>
+<p>工作流</p>
+<figure>
+<img src="https://myql.coding.net/p/owo/d/img/git/raw/main/posts/image-20210420212403763.png" srcset="/img/loading.gif" lazyload alt="" /><figcaption>image-20210420212403763</figcaption>
+</figure>
+<p>对媒体资源的管理</p>
+<figure>
+<img src="https://myql.coding.net/p/owo/d/img/git/raw/main/posts/image-20210420212801157.png" srcset="/img/loading.gif" lazyload alt="" /><figcaption>image-20210420212801157</figcaption>
+</figure>
+<p>对其他页面的修改</p>
+<figure>
+<img src="https://myql.coding.net/p/owo/d/img/git/raw/main/posts/image-20210420213123997.png" srcset="/img/loading.gif" lazyload alt="" /><figcaption>image-20210420213123997</figcaption>
+</figure>
+<figure>
+<img src="https://myql.coding.net/p/owo/d/img/git/raw/main/posts/image-20210420213142628.png" srcset="/img/loading.gif" lazyload alt="" /><figcaption>image-20210420213142628</figcaption>
+</figure>
+<p>在线修改博客首页、文章页、归档页等页面的顶部图</p>
+<figure>
+<img src="https://myql.coding.net/p/owo/d/img/git/raw/main/posts/image-20210420214308165.png" srcset="/img/loading.gif" lazyload alt="" /><figcaption>image-20210420214308165</figcaption>
+</figure>
+<p>在线添加、编辑友链页面</p>
+<figure>
+<img src="https://myql.coding.net/p/owo/d/img/git/raw/main/posts/image-20210418223337304.png" srcset="/img/loading.gif" lazyload alt="" /><figcaption>image-20210418223337304</figcaption>
+</figure>
+<figure>
+<img src="https://myql.coding.net/p/owo/d/img/git/raw/main/posts/image-20210418223354013.png" srcset="/img/loading.gif" lazyload alt="" /><figcaption>image-20210418223354013</figcaption>
+</figure>
+<h3 id="在线演示">🔗在线演示</h3>
+<p>为了更加直观，做了一个已经配置完毕的博客，你可以在线体验上述功能 👉<a target="_blank" rel="noopener external nofollow noreferrer" href="https://qwqmiao.cf/admin/">点我查看</a></p>
+<h2 id="简单说明">📃简单说明</h2>
+<p>下面我将会以 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io/zh-cn/">Hexo</a> + 做演示，并配置 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/fluid-dev/hexo-theme-fluid">Fluid 主题</a>的友链功能，达到在线编辑预览友链的目的，但此方法不仅仅只适用于 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/fluid-dev/hexo-theme-fluid">Fluid 主题</a>的友链功能，其他各类主题也可以通过此方法达到在线修改配置的目的，只要你配置完成，几乎可以修改所有配置项。包括但不限于以下类型的文件<code>yml</code>、<code>yaml</code>、<code>toml</code>、<code>json</code>、<code>md</code>、<code>markdown</code>、<code>html</code>具体请查看 👉<a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.netlifycms.org/">Netlify CMS</a> 文档。</p>
+<h2 id="具体配置">🔧具体配置</h2>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.netlifycms.org/">Netlify CMS</a> 使用的前提条件是你必须将博客部署到 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.netlify.com/">Netlify</a> 上。因为网上有很多部署教程，这里不再重复。</p>
+<p>具体可以查看：</p>
+<ul>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://guanqr.com/tech/website/deploy-blog-to-netlify/">博客通过 Netlify 实现持续集成</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://io-oi.me/tech/deploy-static-site-to-netlify/">将 Hexo 静态博客部署到 Netlify</a></li>
+</ul>
+<h3 id="准备工作">👟准备工作</h3>
+<p>在部署完成后，你需要开启 <code>Identity</code></p>
+<figure>
+<img src="https://myql.coding.net/p/owo/d/img/git/raw/main/posts/image-20210418225044656.png" srcset="/img/loading.gif" lazyload alt="" /><figcaption>image-20210418225044656</figcaption>
+</figure>
+<p>进入设置中</p>
+<figure>
+<img src="https://myql.coding.net/p/owo/d/img/git/raw/main/posts/image-20210418225125358.png" srcset="/img/loading.gif" lazyload alt="" /><figcaption>image-20210418225125358</figcaption>
+</figure>
+<p>将 <code>Registration preferences</code> 修改为 <code>Invite only</code> 此项为是否开启注册，默认是开启注册。修改为 <code>Invite only</code> 后表示仅受邀请的用户可以注册，当然此项你可以在自己注册完毕之后再行修改。</p>
+<figure>
+<img src="https://myql.coding.net/p/owo/d/img/git/raw/main/posts/image-20210418225239607.png" srcset="/img/loading.gif" lazyload alt="" /><figcaption>image-20210418225239607</figcaption>
+</figure>
+<p>下滑找到 <code>Git Gateway</code> 并开启。</p>
+<figure>
+<img src="https://myql.coding.net/p/owo/d/img/git/raw/main/posts/image-20210418225726557.png" srcset="/img/loading.gif" lazyload alt="" /><figcaption>image-20210418225726557</figcaption>
+</figure>
+<p>至此准备工作完成</p>
+<h3 id="修改博客配置">🎨修改博客配置</h3>
+<blockquote>
+<p>在博客根目录中找到<code>_config.yml</code>并修改，这一步是跳过文件夹渲染，不然后面会出错</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">skip_render:</span> <span class="hljs-string">admin/*</span><br></code></pre></td></tr></table></figure>
+</blockquote>
+<p>在博客<code>source</code>文件夹中，创建<code>admin</code>文件夹，并新建两个文件<code>index.html</code>和<code>config.yml</code></p>
+<figure>
+<img src="https://myql.coding.net/p/owo/d/img/git/raw/main/posts/image-20210418230338242.png" srcset="/img/loading.gif" lazyload alt="" /><figcaption>image-20210418230338242</figcaption>
+</figure>
+<p>在 <code>index.html</code> 中添加以下内容</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!doctype <span class="hljs-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>    <br>    <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span> /&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;x-UA-Compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;IE=Edge&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;apple-mobile-web-app-status-bar-style&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;white&quot;</span> /&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://identity.netlify.com/v1/netlify-identity-widget.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>魔王の领地<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br>    <br>    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">defer</span>=<span class="hljs-string">&quot;true&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.jsdelivr.net/npm/netlify-cms@2/dist/netlify-cms.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>在 <code>config.yml</code> 中添加如下折叠内容</p>
+<details>
+<summary>点击展开配置内容</summary><br />
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">backend:</span><br>  <span class="hljs-attr">name:</span> <span class="hljs-string">git-gateway</span> <span class="hljs-comment"># https://github.com/netlify/netlify-cms</span><br>  <span class="hljs-attr">branch:</span> <span class="hljs-string">main</span> <span class="hljs-comment"># 要更新的分支(可选；默认为主分支)</span><br><br><span class="hljs-comment"># This line should *not* be indented</span><br><span class="hljs-attr">publish_mode:</span> <span class="hljs-string">editorial_workflow</span><br><br><span class="hljs-comment"># This line should *not* be indented</span><br><span class="hljs-attr">media_folder:</span> <span class="hljs-string">&quot;source/images/uploads&quot;</span> <span class="hljs-comment"># 媒体文件将存储在图片/上载下的Repo中。</span><br><span class="hljs-attr">public_folder:</span> <span class="hljs-string">&quot;/images/uploads&quot;</span> <span class="hljs-comment"># 上传的媒体的src属性将以/images/uploads开头。</span><br><br><span class="hljs-attr">site_url:</span> <span class="hljs-string">https://www.myql.xyz</span> <span class="hljs-comment"># 网站网址</span><br><span class="hljs-attr">display_url:</span> <span class="hljs-string">https://www.myql.xyz</span> <span class="hljs-comment"># 显示网址</span><br><br><span class="hljs-attr">locale:</span> <span class="hljs-string">&quot;zh_Hans&quot;</span> <span class="hljs-comment"># 语言环境 https://github.com/netlify/netlify-cms/tree/master/packages/netlify-cms-locales/src</span><br><br><span class="hljs-attr">collections:</span>      <span class="hljs-comment"># https://www.netlifycms.org/docs/configuration-options/#collections</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;posts&quot;</span> <span class="hljs-comment"># 在路由中使用，例如：/admin/collections/blog。</span><br>    <span class="hljs-attr">label:</span> <span class="hljs-string">&quot;Post&quot;</span> <span class="hljs-comment"># 在用户界面中使用</span><br>    <span class="hljs-attr">folder:</span> <span class="hljs-string">&quot;source/_posts&quot;</span> <span class="hljs-comment"># 存储文件的文件夹的路径。</span><br>    <span class="hljs-attr">create:</span> <span class="hljs-literal">true</span> <span class="hljs-comment"># 允许用户在这个集合中创建新的文件。</span><br>    <span class="hljs-attr">fields:</span> <span class="hljs-comment"># 每份文件的字段，通常是前面的内容。</span><br>      <span class="hljs-bullet">-</span> &#123;<span class="hljs-attr">label:</span> <span class="hljs-string">&quot;顶部图&quot;</span>, <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;banner_img&quot;</span>, <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;image&quot;</span>, <span class="hljs-attr">required:</span> <span class="hljs-literal">false</span>&#125; <br>      <span class="hljs-bullet">-</span> &#123;<span class="hljs-attr">label:</span> <span class="hljs-string">&quot;文章封面&quot;</span>, <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;index_img&quot;</span>, <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;image&quot;</span>, <span class="hljs-attr">required:</span> <span class="hljs-literal">false</span>&#125; <br>      <span class="hljs-bullet">-</span> &#123;<span class="hljs-attr">label:</span> <span class="hljs-string">&quot;文章排序&quot;</span>, <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;sticky&quot;</span>, <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;number&quot;</span>, <span class="hljs-attr">required:</span> <span class="hljs-literal">false</span>&#125;<br>      <span class="hljs-bullet">-</span> &#123;<span class="hljs-attr">label:</span> <span class="hljs-string">&quot;标题&quot;</span>, <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;title&quot;</span>, <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;string&quot;</span>&#125;<br>      <span class="hljs-bullet">-</span> &#123;<span class="hljs-attr">label:</span> <span class="hljs-string">&quot;发布日期&quot;</span>, <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;date&quot;</span>, <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;datetime&quot;</span>, <span class="hljs-attr">format:</span> <span class="hljs-string">&quot;YYYY-MM-DD HH:mm:ss&quot;</span>, <span class="hljs-attr">dateFormat:</span> <span class="hljs-string">&quot;YYYY-MM-DD&quot;</span>, <span class="hljs-attr">timeFormat:</span> <span class="hljs-string">&quot;HH:mm:ss&quot;</span>, <span class="hljs-attr">required:</span> <span class="hljs-literal">false</span>&#125;<br>      <span class="hljs-bullet">-</span> &#123;<span class="hljs-attr">label:</span> <span class="hljs-string">&quot;更新日期&quot;</span>, <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;updated&quot;</span>, <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;datetime&quot;</span>, <span class="hljs-attr">format:</span> <span class="hljs-string">&quot;YYYY-MM-DD HH:mm:ss&quot;</span>, <span class="hljs-attr">dateFormat:</span> <span class="hljs-string">&quot;YYYY-MM-DD&quot;</span>, <span class="hljs-attr">timeFormat:</span> <span class="hljs-string">&quot;HH:mm:ss&quot;</span>, <span class="hljs-attr">required:</span> <span class="hljs-literal">false</span>&#125;<br>      <span class="hljs-bullet">-</span> &#123;<span class="hljs-attr">label:</span> <span class="hljs-string">&quot;标签&quot;</span>, <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;tags&quot;</span>, <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;list&quot;</span>, <span class="hljs-attr">required:</span> <span class="hljs-literal">false</span>&#125;<br>      <span class="hljs-bullet">-</span> &#123;<span class="hljs-attr">label:</span> <span class="hljs-string">&quot;分类&quot;</span>, <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;categories&quot;</span>, <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;list&quot;</span>, <span class="hljs-attr">required:</span> <span class="hljs-literal">false</span>&#125;<br>      <span class="hljs-bullet">-</span> &#123;<span class="hljs-attr">label:</span> <span class="hljs-string">&quot;关键词&quot;</span>, <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;keywords&quot;</span>, <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;list&quot;</span>, <span class="hljs-attr">required:</span> <span class="hljs-literal">false</span>&#125;<br>      <span class="hljs-bullet">-</span> &#123;<span class="hljs-attr">label:</span> <span class="hljs-string">&quot;摘要&quot;</span>, <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;excerpt&quot;</span>, <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;list&quot;</span>, <span class="hljs-attr">required:</span> <span class="hljs-literal">false</span>&#125;<br>      <span class="hljs-bullet">-</span> &#123;<span class="hljs-attr">label:</span> <span class="hljs-string">&quot;内容&quot;</span>, <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;body&quot;</span>, <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;markdown&quot;</span>, <span class="hljs-attr">required:</span> <span class="hljs-literal">false</span>&#125;<br>      <span class="hljs-bullet">-</span> &#123;<span class="hljs-attr">label:</span> <span class="hljs-string">&quot;永久链接&quot;</span>, <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;permalink&quot;</span>, <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;string&quot;</span>, <span class="hljs-attr">required:</span> <span class="hljs-literal">false</span>&#125;<br>      <span class="hljs-bullet">-</span> &#123;<span class="hljs-attr">label:</span> <span class="hljs-string">&quot;评论&quot;</span>, <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;comments&quot;</span>, <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;boolean&quot;</span>, <span class="hljs-attr">default:</span> <span class="hljs-literal">true</span>, <span class="hljs-attr">required:</span> <span class="hljs-literal">false</span>&#125;<br><br>  <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;pages&quot;</span><br>    <span class="hljs-attr">label:</span> <span class="hljs-string">&quot;Pages&quot;</span><br>    <span class="hljs-attr">files:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">file:</span> <span class="hljs-string">&quot;source/about/index.md&quot;</span><br>        <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;about&quot;</span><br>        <span class="hljs-attr">label:</span> <span class="hljs-string">&quot;关于&quot;</span><br>        <span class="hljs-attr">fields:</span><br>          <span class="hljs-bullet">-</span> &#123;<span class="hljs-attr">label:</span> <span class="hljs-string">&quot;标题&quot;</span>, <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;title&quot;</span>, <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;string&quot;</span>&#125;<br>          <span class="hljs-bullet">-</span> &#123;<span class="hljs-attr">label:</span> <span class="hljs-string">&quot;内容&quot;</span>, <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;body&quot;</span>, <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;markdown&quot;</span>, <span class="hljs-attr">required:</span> <span class="hljs-literal">false</span>&#125;<br>          <span class="hljs-bullet">-</span> &#123;<span class="hljs-attr">label:</span> <span class="hljs-string">&quot;评论&quot;</span>, <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;comments&quot;</span>, <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;boolean&quot;</span>, <span class="hljs-attr">default:</span> <span class="hljs-literal">true</span>, <span class="hljs-attr">required:</span> <span class="hljs-literal">false</span>&#125;<br><br><span class="hljs-comment"># 如果你不是Fluid 主题，请删除以下配置，或者对文件路径及字段进行修改</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;settings&quot;</span><br>    <span class="hljs-attr">label:</span> <span class="hljs-string">&quot;settings&quot;</span><br>    <span class="hljs-attr">files:</span>      <br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">file:</span> <span class="hljs-string">&quot;source/_data/fluid_config.yml&quot;</span><br>        <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;fluid&quot;</span><br>        <span class="hljs-attr">label:</span> <span class="hljs-string">&quot;Fluid 主题配置&quot;</span><br>        <span class="hljs-attr">editor:</span><br>          <span class="hljs-attr">preview:</span> <span class="hljs-literal">true</span>      <span class="hljs-comment"># 是否开启编辑预览</span><br>        <span class="hljs-attr">fields:</span><br>          <span class="hljs-bullet">-</span> <span class="hljs-attr">label:</span> <span class="hljs-string">&quot;首页&quot;</span><br>            <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;index&quot;</span><br>            <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;object&quot;</span><br>            <span class="hljs-attr">collapsed:</span> <span class="hljs-literal">true</span>   <span class="hljs-comment"># 是否折叠显示</span><br>            <span class="hljs-attr">fields:</span><br>              <span class="hljs-bullet">-</span> <span class="hljs-attr">label:</span> <span class="hljs-string">&quot;顶部图&quot;</span><br>                <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;banner_img&quot;</span><br>                <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;image&quot;</span><br>              <span class="hljs-bullet">-</span> <span class="hljs-attr">label:</span> <span class="hljs-string">&quot;高度&quot;</span><br>                <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;banner_img_height&quot;</span><br>                <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;number&quot;</span><br>          <span class="hljs-bullet">-</span> <span class="hljs-attr">label:</span> <span class="hljs-string">&quot;文章页&quot;</span><br>            <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;post&quot;</span><br>            <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;object&quot;</span><br>            <span class="hljs-attr">collapsed:</span> <span class="hljs-literal">true</span><br>            <span class="hljs-attr">fields:</span><br>              <span class="hljs-bullet">-</span> <span class="hljs-attr">label:</span> <span class="hljs-string">&quot;顶部图(默认)&quot;</span><br>                <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;banner_img&quot;</span><br>                <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;image&quot;</span><br>              <span class="hljs-bullet">-</span> <span class="hljs-attr">label:</span> <span class="hljs-string">&quot;高度&quot;</span><br>                <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;banner_img_height&quot;</span><br>                <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;number&quot;</span> <br>              <span class="hljs-bullet">-</span> <span class="hljs-attr">label:</span> <span class="hljs-string">&quot;文章封面图(默认)&quot;</span><br>                <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;default_index_img&quot;</span><br>                <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;image&quot;</span><br>          <span class="hljs-bullet">-</span> <span class="hljs-attr">label:</span> <span class="hljs-string">&quot;归档页&quot;</span><br>            <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;archive&quot;</span><br>            <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;object&quot;</span><br>            <span class="hljs-attr">collapsed:</span> <span class="hljs-literal">true</span><br>            <span class="hljs-attr">fields:</span><br>              <span class="hljs-bullet">-</span> <span class="hljs-attr">label:</span> <span class="hljs-string">&quot;顶部图&quot;</span><br>                <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;banner_img&quot;</span><br>                <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;image&quot;</span><br>              <span class="hljs-bullet">-</span> <span class="hljs-attr">label:</span> <span class="hljs-string">&quot;高度&quot;</span><br>                <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;banner_img_height&quot;</span><br>                <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;number&quot;</span><br>          <span class="hljs-bullet">-</span> <span class="hljs-attr">label:</span> <span class="hljs-string">&quot;分类页&quot;</span><br>            <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;category&quot;</span><br>            <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;object&quot;</span><br>            <span class="hljs-attr">collapsed:</span> <span class="hljs-literal">true</span><br>            <span class="hljs-attr">fields:</span><br>              <span class="hljs-bullet">-</span> <span class="hljs-attr">label:</span> <span class="hljs-string">&quot;顶部图&quot;</span><br>                <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;banner_img&quot;</span><br>                <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;image&quot;</span><br>              <span class="hljs-bullet">-</span> <span class="hljs-attr">label:</span> <span class="hljs-string">&quot;高度&quot;</span><br>                <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;banner_img_height&quot;</span><br>                <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;number&quot;</span><br>          <span class="hljs-bullet">-</span> <span class="hljs-attr">label:</span> <span class="hljs-string">&quot;标签页&quot;</span><br>            <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;tag&quot;</span><br>            <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;object&quot;</span><br>            <span class="hljs-attr">collapsed:</span> <span class="hljs-literal">true</span><br>            <span class="hljs-attr">fields:</span><br>              <span class="hljs-bullet">-</span> <span class="hljs-attr">label:</span> <span class="hljs-string">&quot;顶部图&quot;</span><br>                <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;banner_img&quot;</span><br>                <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;image&quot;</span><br>              <span class="hljs-bullet">-</span> <span class="hljs-attr">label:</span> <span class="hljs-string">&quot;高度&quot;</span><br>                <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;banner_img_height&quot;</span><br>                <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;number&quot;</span><br>          <span class="hljs-bullet">-</span> <span class="hljs-attr">label:</span> <span class="hljs-string">&quot;关于页&quot;</span><br>            <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;about&quot;</span><br>            <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;object&quot;</span><br>            <span class="hljs-attr">collapsed:</span> <span class="hljs-literal">true</span><br>            <span class="hljs-attr">fields:</span><br>              <span class="hljs-bullet">-</span> <span class="hljs-attr">label:</span> <span class="hljs-string">&quot;顶部图&quot;</span><br>                <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;banner_img&quot;</span><br>                <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;image&quot;</span><br>              <span class="hljs-bullet">-</span> <span class="hljs-attr">label:</span> <span class="hljs-string">&quot;高度&quot;</span><br>                <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;banner_img_height&quot;</span><br>                <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;number&quot;</span><br>          <span class="hljs-bullet">-</span> <span class="hljs-attr">label:</span> <span class="hljs-string">&quot;友链页面&quot;</span><br>            <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;links&quot;</span><br>            <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;object&quot;</span><br>            <span class="hljs-attr">collapsed:</span> <span class="hljs-literal">true</span><br>            <span class="hljs-attr">fields:</span><br>              <span class="hljs-bullet">-</span> <span class="hljs-attr">label:</span> <span class="hljs-string">&quot;顶部图&quot;</span><br>                <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;banner_img&quot;</span><br>                <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;image&quot;</span><br>              <span class="hljs-bullet">-</span> <span class="hljs-attr">label:</span> <span class="hljs-string">&quot;高度&quot;</span><br>                <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;banner_img_height&quot;</span><br>                <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;number&quot;</span><br>              <span class="hljs-bullet">-</span> <span class="hljs-attr">label:</span> <span class="hljs-string">&quot;项目&quot;</span><br>                <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;items&quot;</span><br>                <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;list&quot;</span><br>                <span class="hljs-attr">fields:</span><br>                  <span class="hljs-bullet">-</span> &#123;<span class="hljs-attr">label:</span> <span class="hljs-string">&quot;网站名称&quot;</span>, <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;title&quot;</span>, <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;string&quot;</span>, <span class="hljs-attr">required:</span> <span class="hljs-literal">false</span>&#125;<br>                  <span class="hljs-bullet">-</span> &#123;<span class="hljs-attr">label:</span> <span class="hljs-string">&quot;网址描述&quot;</span>, <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;intro&quot;</span>, <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;string&quot;</span>, <span class="hljs-attr">required:</span> <span class="hljs-literal">false</span>&#125;<br>                  <span class="hljs-bullet">-</span> &#123;<span class="hljs-attr">label:</span> <span class="hljs-string">&quot;网站地址&quot;</span>, <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;link&quot;</span>, <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;string&quot;</span>, <span class="hljs-attr">required:</span> <span class="hljs-literal">false</span>&#125;<br>                  <span class="hljs-bullet">-</span> &#123;<span class="hljs-attr">label:</span> <span class="hljs-string">&quot;网站图片&quot;</span>, <span class="hljs-attr">name:</span> <span class="hljs-string">&quot;avatar&quot;</span>, <span class="hljs-attr">widget:</span> <span class="hljs-string">&quot;image&quot;</span>, <span class="hljs-attr">required:</span> <span class="hljs-literal">false</span>&#125;<br></code></pre></td></tr></table></figure>
+</details>
+<p>请注意，这里我对 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/fluid-dev/hexo-theme-fluid">Fluid 主题</a>进行了配置，例如<code>banner_img</code>、<code>index_img</code>等项目，不能正常使用请删除，如果你不是 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/fluid-dev/hexo-theme-fluid">Fluid 主题</a>请根据实际情况对<code>source\admin\config.yml</code>配置进行修改，如果你和我一样是 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/fluid-dev/hexo-theme-fluid">Fluid 主题</a>，还需要将主题配置文件（<code>/_config.fluid.yml</code>）中的相对应的字段及其内容一并注释掉才能使其生效，类似于这样</p>
+<figure>
+<img src="https://myql.coding.net/p/owo/d/img/git/raw/main/posts/image-20210420221125705.png" srcset="/img/loading.gif" lazyload alt="" /><figcaption>image-20210420221125705</figcaption>
+</figure>
+<figure>
+<img src="https://myql.coding.net/p/owo/d/img/git/raw/main/posts/image-20210419015951835.png" srcset="/img/loading.gif" lazyload alt="" /><figcaption>image-20210419015951835</figcaption>
+</figure>
+<p>并且创建<code>source\_data\fluid_config.yml</code>，将相关配置复制粘贴到里面（请根据此配置去主题配置文件中注释掉相对应的字段）</p>
+<details>
+<p><summary>点击展开配置内容</summary><br />
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">index:</span><br>  <span class="hljs-attr">banner_img:</span> <span class="hljs-string">https://cdn.jsdelivr.net/gh/leicancun/img@main/images/background.webp</span><br>  <span class="hljs-attr">banner_img_height:</span> <span class="hljs-number">100</span><br><span class="hljs-attr">post:</span><br>  <span class="hljs-attr">banner_img:</span> <span class="hljs-string">https://cdn.jsdelivr.net/gh/leicancun/img@main/banner_img/mmexport1602581319886.webp</span><br>  <span class="hljs-attr">banner_img_height:</span> <span class="hljs-number">70</span><br>  <span class="hljs-attr">default_index_img:</span> <span class="hljs-string">https://cdn.jsdelivr.net/gh/leicancun/img@main/banner_img/wallhaven-g8wvm7.webp</span><br><span class="hljs-attr">archive:</span><br>  <span class="hljs-attr">banner_img:</span> <span class="hljs-string">https://cdn.jsdelivr.net/gh/leicancun/img@main/banner_img/wallhaven-q6ov7d.webp</span><br>  <span class="hljs-attr">banner_img_height:</span> <span class="hljs-number">80</span><br><span class="hljs-attr">category:</span><br>  <span class="hljs-attr">banner_img:</span> <span class="hljs-string">https://cdn.jsdelivr.net/gh/leicancun/img@main/banner_img/wallhaven-zm93dj.webp</span><br>  <span class="hljs-attr">banner_img_height:</span> <span class="hljs-number">80</span><br><span class="hljs-attr">tag:</span><br>  <span class="hljs-attr">banner_img:</span> <span class="hljs-string">https://cdn.jsdelivr.net/gh/leicancun/img@main/banner_img/wallhaven-1kkm2g.webp</span><br>  <span class="hljs-attr">banner_img_height:</span> <span class="hljs-number">80</span><br><span class="hljs-attr">about:</span><br>  <span class="hljs-attr">banner_img:</span> <span class="hljs-string">https://cdn.jsdelivr.net/gh/leicancun/img@main/banner_img/wallhaven-pkkr2.webp</span><br>  <span class="hljs-attr">banner_img_height:</span> <span class="hljs-number">80</span><br><span class="hljs-attr">links:</span><br>  <span class="hljs-attr">banner_img:</span> <span class="hljs-string">https://cdn.jsdelivr.net/gh/leicancun/img@main/banner_img/wallhaven-rddv31.webp</span><br>  <span class="hljs-attr">banner_img_height:</span> <span class="hljs-number">80</span><br>  <span class="hljs-attr">items:</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-attr">title:</span> <span class="hljs-string">小丁的个人博客</span><br>      <span class="hljs-attr">intro:</span> <span class="hljs-string">世间所有的相遇，都是久别重逢</span><br>      <span class="hljs-attr">link:</span> <span class="hljs-string">https://tding.top</span><br>      <span class="hljs-attr">avatar:</span> <span class="hljs-string">https://tding.top/images/avatar.webp</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-attr">title:</span> <span class="hljs-string">米奇妙妙屋</span><br>      <span class="hljs-attr">intro:</span> <span class="hljs-string">逐风揽月登九天</span> <span class="hljs-string">踏浪擒龙游四海</span><br>      <span class="hljs-attr">link:</span> <span class="hljs-string">https://ifibe.com/</span><br>      <span class="hljs-attr">avatar:</span> <span class="hljs-string">https://cdn.jsdelivr.net/gh/useblue/ucdn/imgs/avatar.webp</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-attr">title:</span> <span class="hljs-string">荷戟独彷徨</span><br>      <span class="hljs-attr">intro:</span> <span class="hljs-string">爱光学，爱生活，爱创造</span><br>      <span class="hljs-attr">link:</span> <span class="hljs-string">https://guanqr.com/</span><br>      <span class="hljs-attr">avatar:</span> <span class="hljs-string">https://cdn.jsdelivr.net/gh/guanqr/blog/static/icons/android-chrome-512x512.png</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-attr">title:</span> <span class="hljs-string">iMaeGoo’s</span> <span class="hljs-string">Blog</span><br>      <span class="hljs-attr">intro:</span> <span class="hljs-string">虹墨空间站</span><br>      <span class="hljs-attr">link:</span> <span class="hljs-string">https://www.imaegoo.com</span><br>      <span class="hljs-attr">avatar:</span> <span class="hljs-string">https://www.imaegoo.com/images/avatar.jpg</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-attr">title:</span> <span class="hljs-string">琉仙の后花园</span><br>      <span class="hljs-attr">intro:</span> <span class="hljs-string">一起来种花家呀</span><br>      <span class="hljs-attr">link:</span> <span class="hljs-string">https://blog.lx101.cn/</span><br>      <span class="hljs-attr">avatar:</span> <span class="hljs-string">https://z3.ax1x.com/2021/03/28/cS2LNV.jpg</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-attr">title:</span> <span class="hljs-string">LOGI</span><br>      <span class="hljs-attr">intro:</span> <span class="hljs-string">会点代码的强迫症</span><br>      <span class="hljs-attr">link:</span> <span class="hljs-string">https://logi.im</span><br>      <span class="hljs-attr">avatar:</span> <span class="hljs-string">https://code.bdstatic.com/npm/logicdn@1.0.0/logi.im/usr/images/global/logo.webp</span><br></code></pre></td></tr></table></figure></p>
+</details>
+<p>请保持这样的格式，当然如果你对<code>yml</code>语法非常了解也可以自行修改🤣</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">links:</span><br>  <span class="hljs-attr">items:</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-attr">title:</span> 			<span class="hljs-comment"># 博客名称</span><br>      <span class="hljs-attr">intro:</span> 			<span class="hljs-comment"># 博客描述</span><br>      <span class="hljs-attr">link:</span> 			<span class="hljs-comment"># 博客链接</span><br>      <span class="hljs-attr">avatar:</span> 			<span class="hljs-comment"># 博客logo</span><br></code></pre></td></tr></table></figure>
+<h3 id="结语">🤣结语</h3>
+<p>说一下为什么不推荐直接修改根目录下的 <code>_config.fluid.yml</code> 因为通过 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.netlifycms.org/">Netlify CMS</a> 在线修改配置文件后，仅会保留你已经在 <code>source\admin\config.yml</code> 中配置的选项，没有配置的选项会默认清空，按主题默认配置进行，你当然可以将所有选项进行配置，但是没必要，所以推荐通过 <code>source\_data\fluid_config.yml</code> 仅复制粘贴需要的选项进行修改配置。</p>
+<hr />
+<p>至此 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.netlifycms.org/">Netlify CMS</a> 配置就算完成了，只要推送代码，等待片刻，通过你部署在 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.netlify.com/">Netlify</a> 上的域名，加 <code>/admin/</code> 即可访问你的博客后台。</p>
+<h2 id="一键部署">🚀 一键部署</h2>
+<p>如果你感觉有点繁琐，或者怕配置出错可以直接使用我配置好的<code>一键部署</code>来快速搭建你的博客👉<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/leicancun/hexo-blog-netlify">点击前往</a></p>
+<p>ps: 即使是一键部署也不要忘记<code>准备工作</code>里的步骤，这很重要</p>
+<h2 id="改进计划">😕 改进计划</h2>
+<p><del>因为对 css 不太熟悉，并没有设置页面自适应，导致现在编辑页面的预览体验很差，在手机上显示也不甚理想，等我多熟悉熟悉 css 然后弄一下自适应。</del></p>
+<p>目前对图片并没有自适应，在手机上显示的效果也不算好，因为能力有限折腾了很久没弄明白，官方文档在这里👉<a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.netlifycms.org/docs/customization/">点我查看</a><br />
+如果能有大佬能帮助我就更好了，十分欢迎各位大佬</p>
+<h2 id="感谢">😁 感谢</h2>
+<p>十分感谢 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/zkqiang">zkqiang</a> 大佬对我的耐心帮助🎉🎉🎉</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%8A%9F%E8%83%BD%E5%A2%9E%E5%BC%BA/" class="category-chain-item">功能增强</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Hexo/" class="print-no-link">#Hexo</a>
+      
+        <a href="/tags/%E7%94%A8%E6%88%B7%E7%BB%8F%E9%AA%8C/" class="print-no-link">#用户经验</a>
+      
+        <a href="/tags/%E8%8A%B1%E9%87%8C%E8%83%A1%E5%93%A8/" class="print-no-link">#花里胡哨</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Hexo Netlify CMS 在线编辑博客</div>
+      <div>https://fluid-dev.cn/posts/hexo-netlify/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>千泷</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年4月20日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/" rel="external nofollow noreferrer">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/" rel="external nofollow noreferrer">
+                  <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                    <i class="iconfont icon-sa"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+<div style="width:100%;display:flex;justify-content:center;margin-bottom:1.5rem"><ins class="adsbygoogle" style="display:flex;justify-content:center;max-width:845px;width:100%;height:90px" data-ad-client="ca-pub-2938778520580915" data-ad-slot="5354067759"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({}); </script></div>
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/fluid-adsense/" title="在 Fluid 主题中加入谷歌广告">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">在 Fluid 主题中加入谷歌广告</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/hexo-injector/" title="通过 Hexo 5 注入器为主题添加新功能">
+                        <span class="hidden-mobile">通过 Hexo 5 注入器为主题添加新功能</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"LyT8mpSI2Jq9CRhOtNOgBXkE-9Nh9j0Va","appKey":"fUOlkXhD9wcmxOTed9NdlqPH","path":"window.location.pathname","placeholder":"留言仅限讨论，禁止广告等行为","avatar":"robohash","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"https://lyt8mpsi.lc-cn-e1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"appid":"LyT8mpSI2Jq9CRhOtNOgBXkE-9Nh9j0Va","appkey":"fUOlkXhD9wcmxOTed9NdlqPH"},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="/js/custom.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2938778520580915" crossorigin="anonymous"></script>
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
